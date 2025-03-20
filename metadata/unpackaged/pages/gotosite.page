@@ -1,0 +1,19 @@
+<apex:page standardController="Contact" showHeader="false" sidebar="false">
+    <script type="text/javascript">
+        const dbRequest = indexedDB.open('SharedStorage', 1);
+
+dbRequest.onupgradeneeded = function(event) {
+    const db = event.target.result;
+    db.createObjectStore('accountData', { keyPath: 'key' });
+};
+
+dbRequest.onsuccess = function(event) {
+    const db = event.target.result;
+    const transaction = db.transaction(['accountData'], 'readwrite');
+    const store = transaction.objectStore('accountData');
+    store.put({ key: 'accountId', value: '{!Contact.Account_id__c}' });
+    window.location.href = 'https://personalusage-dev-ed.develop.my.site.com/';
+};
+
+    </script>
+</apex:page>

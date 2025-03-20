@@ -1,0 +1,121 @@
+<template>
+    <div class="calendar-div">
+        <div class="calendarType">
+          Implementation Date
+          <span class="reqtxt">req</span>
+        </div>
+        <div class="icon-calendar">
+          <input class="custom-input" value={selectedDateRange} readonly onclick={openCalendar}
+            placeholder="Please Select" />
+          <span class="svg-container" onclick={openCalendar}>
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+              onclick={openCalendar}>
+              <path
+                d="M19.5 4H18.5V2H16.5V4H8.5V2H6.5V4H5.5C4.39 4 3.51 4.9 3.51 6L3.5 20C3.5 21.1 4.39 22 5.5 22H19.5C20.6 22 21.5 21.1 21.5 20V6C21.5 4.9 20.6 4 19.5 4ZM19.5 20H5.5V10H19.5V20ZM19.5 8H5.5V6H19.5V8ZM9.5 14H7.5V12H9.5V14ZM13.5 14H11.5V12H13.5V14ZM17.5 14H15.5V12H17.5V14ZM9.5 18H7.5V16H9.5V18ZM13.5 18H11.5V16H13.5V18ZM17.5 18H15.5V16H17.5V18Z"
+                fill="#7B7B7B" />
+            </svg>
+          </span>
+        </div>
+        <template if:true={isCalendarOpen}>
+          <div class="calendar-popup" onclick={handleInsideClick}>
+            <div class="calendar-header">
+              <div>
+                <button class="button-disable" disabled={isPrevDisabled}>
+                  <lightning-icon class="nav-button prev-button" icon-name="utility:chevronleft"
+                    alternative-text="Previous Month" onclick={goToPreviousMonth}
+                    size="xx-small"></lightning-icon>
+                </button>
+                <span class="calendar-month">{monthLabel}</span>
+                <button class="button-disable" disabled={isNextMonthDisabled}>
+                  <lightning-icon class="nav-button next-button" icon-name="utility:chevronright"
+                    alternative-text="Next Month" onclick={goToNextMonth} size="xx-small"></lightning-icon>
+                </button>
+              </div>
+              <div style="display: flex; gap: 12px;">
+                <span class="calendar-year">{reiwaYear}</span>
+                <span class="calendar-year" style="display: flex
+                      ;
+                          gap: 10px;
+                          align-items: center;
+                          color: #7b7b7b;">
+                          <svg width="20" height="20" class="year-toggle" onclick={prevyear} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_37188_115973)">
+                            <g filter="url(#filter0_d_37188_115973)">
+                            <path d="M13.0972 2.5L15 4.2625L8.81916 10L15 15.7375L13.0972 17.5L5 10L13.0972 2.5Z" fill="#262626"/>
+                            </g>
+                            </g>
+                            <defs>
+                            <filter id="filter0_d_37188_115973" x="-15" y="-17.5" width="50" height="55" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                            <feOffset/>
+                            <feGaussianBlur stdDeviation="10"/>
+                            <feComposite in2="hardAlpha" operator="out"/>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_37188_115973"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_37188_115973" result="shape"/>
+                            </filter>
+                            <clipPath id="clip0_37188_115973">
+                            <rect width="20" height="20" fill="white" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 20 20)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                            
+                          {year}
+                          <svg width="20" height="20" class="year-toggle" onclick={nextyear} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_37188_115978)">
+                            <g filter="url(#filter0_d_37188_115978)">
+                            <path d="M6.90284 2.5L5 4.2625L11.1808 10L5 15.7375L6.90284 17.5L15 10L6.90284 2.5Z" class="next-year-toggle"/>
+                            </g>
+                            </g>
+                            <defs>
+                            <filter id="filter0_d_37188_115978" x="-15" y="-17.5" width="50" height="55" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                            <feOffset/>
+                            <feGaussianBlur stdDeviation="10"/>
+                            <feComposite in2="hardAlpha" operator="out"/>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_37188_115978"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_37188_115978" result="shape"/>
+                            </filter>
+                            <clipPath id="clip0_37188_115978">
+                            <rect width="20" height="20" fill="white" transform="translate(0 20) rotate(-90)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                            
+
+                </span>
+              </div>
+            </div>
+            <div class="calendar-days-row">
+              <div class="day-label">S</div>
+              <div class="day-label">M</div>
+              <div class="day-label">T</div>
+              <div class="day-label">W</div>
+              <div class="day-label">T</div>
+              <div class="day-label">F</div>
+              <div class="day-label">S</div>
+            </div>
+            <div class="calendar-dates-grid">
+              <template for:each={calendarDates} for:item="day">
+                <button key={day.key} class={day.className} data-day={day.value} data-month={day.month}
+                  data-year={day.year} onclick={selectDate} disabled={day.isDisabled}>
+                  {day.value}
+                </button>
+              </template>
+            </div>
+            <div class="calendar-footer">
+              <div class="reset-button" onclick={resetDate}>
+                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 6.91L17.59 5.5L12 11.09L6.41 5.5L5 6.91L10.59 12.5L5 18.09L6.41 19.5L12 13.91L17.59 19.5L19 18.09L13.41 12.5L19 6.91Z" fill="#262626"/>
+                  </svg>
+                  
+                <p>Reset</p>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+</template>

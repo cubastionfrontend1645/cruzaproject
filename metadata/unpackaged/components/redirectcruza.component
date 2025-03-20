@@ -1,0 +1,12 @@
+<apex:component controller="ContactRedirectController">
+    <script type="text/javascript">
+        // Get the Account ID dynamically from the Contact record
+        var accountId = '{!accountId}';
+
+        // Store the Account ID in localStorage
+        localStorage.setItem('accountId', accountId);
+
+        // Redirect to the LWR site directly
+        window.location.href = 'https://personalusage-dev-ed.develop.my.site.com/';
+    </script>
+</apex:component>

@@ -1,0 +1,224 @@
+.calendar-div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+}
+
+.calendarType {
+    display: flex;
+    width: 33.5%;
+    margin-bottom: 5px;
+}
+
+.year-toggle {
+    cursor: pointer;
+}
+
+.next-year-toggle {
+    fill: #bbbbbb;
+}
+
+.active {
+    fill: #262626;
+}
+
+.reqtxt {
+    color: white;
+    font-size: 10px;
+    background-color: #e10202;
+    padding: 5px 6px;
+    width: 45px;
+    height: 22px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2%;
+}
+
+.icon-calendar {
+    position: relative;
+    display: inline-block;
+    width: 34.5%;
+    cursor: pointer;
+}
+
+.custom-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid hsl(0, 0%, 80%);
+}
+
+.custom-input::placeholder {
+    color: var(--gray-text-2-textbox-text-bg, #BBB);
+    ;
+}
+
+.svg-container {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.svg-container svg {
+    fill: #7B7B7B;
+    width: 25px;
+    height: 24px;
+}
+
+.calendar-popup {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    position: absolute;
+    top: 68px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    width: 34.5%;
+    margin-top: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.button-disable {
+    background-color: white;
+    border: none;
+    --slds-c-icon-color-foreground-default: #e10202;
+}
+
+.button-disable:disabled {
+    --slds-c-icon-color-foreground-default: #BBBBBB;
+    cursor: not-allowed;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+
+.nav-button:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.calendar-month,
+.calendar-year,
+.reiwa-year {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.calendar-days-row,
+.calendar-dates-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
+    justify-items: center;
+    text-align: center;
+}
+
+.calendar-days-row {
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #333;
+}
+
+.day-label {
+    padding: 5px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #AAA;
+}
+
+.calendar-dates-grid {
+    margin-bottom: 20px;
+}
+
+.day-button {
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.day-button.empty {
+    background-color: transparent;
+    border: none;
+    cursor: not-allowed;
+}
+
+.day-button.disabled {
+    color: #BBBBBB;
+    cursor: not-allowed;
+}
+
+.calendar-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.reset-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.day-button.selected {
+    width: 100%;
+    background-color: #feeeeb !important;
+    color: #e10202 !important;
+}
+
+.startborder {
+    border-radius: 45% 0 0 45%;
+}
+
+.endborder {
+    border-radius: 0 45% 45% 0;
+}
+
+.singleborder {
+    border-radius: 45%;
+}
+
+.day-button.in-range {
+    width: 100%;
+    background-color: #feeeeb !important;
+    color: #e10202 !important;
+}
+
+.reiwa-calendar {
+    white-space: nowrap;
+    margin-top: 4px;
+}
+
+.calendar-year {
+    margin-top: 4px;
+}

@@ -1,0 +1,113 @@
+<template>
+    <!-- Basic Info Page -->
+    <div class="basic-info-page">
+        <!-- Header Section -->
+        <div class="basic-info-header">
+            Basic Information
+        </div>
+
+        <!-- Content Section -->
+        <div class="basic-info-sections">
+            <!-- Left Section: Profile Image -->
+            <div class="basic-info-left">
+                <div class="basic-info-profile-container">
+                    <div class="basic-info-profile-image">
+                        <template if:true={imageUrl}>
+                            <img 
+                                src={imageUrl} 
+                                alt="User Profile Picture" 
+                                class="basic-info-image" 
+                            />
+                        </template>
+                        <template if:false={imageUrl}>
+                            <div class="placeholder">
+                                <img 
+                                    src={shadowimage} 
+                                    alt="Default Placeholder Picture" 
+                                    class="basic-info-placeholder-image" 
+                                />
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section: Info Box -->
+            <div class="basic-info-box">
+                <!-- View Mode -->
+                <template if:false={editBasicInfo}>
+                    <div class="basic-info-buttons">
+                        <button class="basic-info-button" onclick={gotohome} aria-label="Go back to home">
+                            Back
+                        </button>
+                        <button class="basic-info-button" onclick={handleeditbasic} aria-label="Edit basic info">
+                            Edit
+                        </button>
+                    </div>
+                    <div class="basic-info-content">
+                        <template for:each={basicInfo} for:item="field">
+                            <div key={field.id} class="basic-info-item">
+                                <div class="basic-info-item-label">{field.label}</div>
+                                <div class="basic-info-item-value">{field.value}</div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <!-- Edit Mode -->
+                <template if:true={editBasicInfo}>
+                    <div class="basic-info-buttons">
+                        <button class="basic-info-button" onclick={gotobasic} aria-label="Cancel edit">
+                            Cancel
+                        </button>
+                        <button class="basic-info-button" onclick={handlesavebasic} aria-label="Save changes">
+                            Save
+                        </button>
+                    </div>
+                    <div class="basic-info-content">
+                        <template for:each={basicInfo} for:item="field">
+                            <div key={field.id} class="basic-info-item">
+                                <div class="basic-info-item-label">{field.label}</div>
+                                <div class="basic-info-item-value">
+                                    <input 
+                                        class="basic-info-input" 
+                                        type="text" 
+                                        value={field.value} 
+                                        data-id={field.id} 
+                                        onchange={handleInputChange} 
+                                        aria-label="Edit {field.label}"
+                                    />
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Section -->
+    <template if:true={isModalOpen}>
+        <div class="modal-background" aria-hidden="true"></div>
+        <div class="modal-content" role="dialog" aria-modal="true">
+            <div class="modal-text">Do you wish to {actionModal}?</div>
+            <div class="buttons">
+                <button 
+                    class="cancel-btn" 
+                    onclick={handleNo} 
+                    aria-label="Cancel action"
+                >
+                    No
+                </button>
+                <button 
+                    class="save-btn" 
+                    data-name={actionModal} 
+                    onclick={handleYes} 
+                    aria-label="Confirm action"
+                >
+                    Yes
+                </button>
+            </div>
+        </div>
+    </template>
+</template>

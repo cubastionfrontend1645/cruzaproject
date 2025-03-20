@@ -1,0 +1,25 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.first-half, .second-half {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.first-half-item-logo{
+    display: flex;
+    color: blueviolet;
+    font-size: 1.5rem;
+    font-weight: bold;
+    justify-content: center;
+}
+
+.first-half-item-logo-help {
+    display: flex;
+    color: blueviolet;
+    font-size: 10px;
+    font-weight: bolder;
+}
