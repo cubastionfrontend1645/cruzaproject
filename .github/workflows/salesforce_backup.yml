@@ -26,7 +26,7 @@ jobs:
 
       - name: Retrieve Metadata from Salesforce
         run: |
-          sfdx force:mdapi:retrieve -r ./metadata -u myOrg -k package.xml
+          sfdx force:mdapi:retrieve -r ./metadata -u personal-usage -k package.xml
           unzip -o ./metadata/unpackaged.zip -d ./metadata/
 
       - name: Commit and Push Changes
