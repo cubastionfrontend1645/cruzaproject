@@ -32,21 +32,27 @@ jobs:
         run: |
           echo "🔹 Authenticating with Salesforce..."
           echo "${SFDX_AUTH_URL}" > sfdx_auth.txt
-          echo "🔹 Contents of auth file (masked in logs):"
-          cat sfdx_auth.txt | sed 's/./*/g'  # Mask secret for security
           echo "🔹 Storing authentication..."
           sfdx force:auth:sfdxurl:store -f sfdx_auth.txt -a personal-usage -d || { echo "❌ Authentication failed"; exit 1; }
           rm sfdx_auth.txt
           echo "✅ Authentication completed."
           echo "🔹 Listing authenticated orgs..."
-          sfdx auth:list
+          sfdx force:auth:list
+
+      - name: Check if package.xml exists
+        run: |
+          if [ ! -f manifest/package.xml ]; then
+            echo "❌ package.xml not found in manifest/ directory!"
+            exit 1
+          fi
+          echo "✅ package.xml found in manifest/."
 
       - name: Retrieve Metadata from Salesforce
         run: |
           echo "🔹 Creating metadata directory..."
           mkdir -p metadata
           echo "🔹 Retrieving metadata..."
-          sfdx force:mdapi:retrieve -r ./metadata -u personal-usage -k package.xml || { echo "❌ Metadata retrieval failed"; exit 1; }
+          sfdx force:mdapi:retrieve -r ./metadata -u personal-usage -k manifest/package.xml || { echo "❌ Metadata retrieval failed"; exit 1; }
           echo "✅ Metadata retrieval completed."
           echo "🔹 Extracting metadata..."
           unzip -o ./metadata/unpackaged.zip -d ./metadata/ || { echo "❌ Metadata extraction failed"; exit 1; }
