@@ -1,0 +1,40 @@
+<template>
+    <div class="user-header">Users</div>
+    <div class="user-box">
+        <div class="user-buttons">
+            <div class="back-to-home" onclick={gotohome}>Home</div>
+            <div class="add-user" onclick={handleadduser}>Add</div>
+        </div>
+        <div class="user-list">
+            <template for:each={userlist} for:item="user">
+                <div key={user.Id} class="user-items">
+                  <img src={user.Id} alt="User" class="user-img">
+                    {user.Name}</div>
+            </template>
+        </div>
+        <div class="pagination">
+            <button class="prevnext" onclick={previousPage} disabled={disablePrev}>Previous</button>
+            <template for:each={paginationButtons} for:item="page">
+                <button
+                    key={page}
+                    class={page.className}
+                    data-page={page.number}
+                    onclick={handlePageClick}
+                >
+                    {page.label}
+                </button>
+            </template>
+            <button class="prevnext" onclick={nextPage} disabled={disableNext}>Next</button>
+        </div>
+    </div>
+    <template if:true={isModalOpen}>
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="modal-text">Do you wish to {actionModal}</div>
+            <div class="buttons">
+                <div class="cancel-btn" onclick={handleno}>No</div>
+                <div class="save-btn" onclick={handleyes}>Yes</div>
+            </div>
+        </div>
+    </template>
+</template>

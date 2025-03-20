@@ -1,0 +1,179 @@
+<apex:page controller="FSLDataGenerator" lightningStylesheets="true" showHeader="false" docType="html-5.0" cache="false">
+    <style>
+        body{ 
+        background-color: white;
+        }
+        #container {
+        width: 1260px;
+        margin: 0 auto;
+        padding:10px 5px 15px;
+        }
+        #inner {
+        float: left;
+        width: 32%;
+        border: 2px solid #EEEEEE;
+          border-radius: 5px;
+        padding:10px;
+        margin:5px;
+        background-color: #ECFCFF;
+        }
+    </style>
+    <head>
+        <apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"  />
+        <apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js" />
+        <apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js" />
+    </head>
+    <script type="text/javascript">
+    
+    function setFocusOnLoad() {}
+    j$ = jQuery.noConflict();
+    j$(document).ready(function()
+    {
+        j$( "#earlyStart" ).datepicker(
+            {
+                defaultDate: "+1w",
+                changeMonth: true,
+                changeYear: true,
+                numberOfMonths: 1,
+                dateFormat:"yy-mm-dd",
+                altField: "#earlyStart",
+                altFormat: "yy-mm-dd"
+            })
+        j$( "#dueDate").datepicker(
+            {
+                defaultDate: "+1w",
+                changeMonth: true,
+                changeYear: true,
+                numberOfMonths: 1,
+                dateFormat:"yy-mm-dd",
+                altField: "#dueDate",
+                altFormat: "yy-mm-dd"
+            })
+    });
+    function setVar(param){
+        jQuery('[id$=myHiddenField]').val(param);
+    }
+    function setVar2(param){
+        jQuery('[id$=myHiddenField2]').val(param);
+    }
+    </script>
+    
+    <apex:form rendered="{!submitted=false}">
+        
+        <div id="container">
+            <div id="inner">
+                <h2>Job Structure</h2>
+                <apex:outputText >Number of Work Orders To Create:&nbsp;&nbsp;</apex:outputText>
+                <apex:input type="number" value="{!numWosToCreate}" html-min="1" html-max="99"/>
+                <br></br><br></br>
+        
+                <div>
+                    <apex:outputText >Create WOLIs&nbsp;&nbsp;</apex:outputText>
+                    <apex:inputcheckbox value="{!generateWolis}" label="checkBox">    
+                        <apex:actionSupport event="onchange" rerender="woliCreationSection"/>    
+                    </apex:inputcheckbox> 
+                </div>
+                <br></br>
+                    
+                <apex:outputPanel id="woliCreationSection">        
+                    <apex:outputText >Number of WOLIs to Create per Work Order:&nbsp;&nbsp;</apex:outputText>
+                    <apex:input type="number" disabled="{!generateWolis=false}" value="{!numWolisToCreate}" html-min="1" html-max="99"/>  
+                </apex:outputPanel>
+                <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
+            </div>
+            <div id="inner">
+                <h2>Work Details</h2>
+                <apex:outputPanel id="workTypeSection">  
+                    <apex:outputText >Work Type to Use:&nbsp;&nbsp;</apex:outputText>
+                    <apex:selectList disabled="{!randomWorkType=true}" value="{!workTypeChoice}" size="1" multiselect="false">
+                        <apex:selectOptions value="{!workTypeOptions}"/>
+                    </apex:selectList>
+                </apex:outputPanel>
+                <br></br><br></br>
+            
+                <apex:outputText >Random Work Type&nbsp;&nbsp;</apex:outputText>
+                <apex:inputcheckbox value="{!randomWorkType}" label="checkBox">    
+                    <apex:actionSupport event="onchange" rerender="workTypeSection"/>    
+                </apex:inputcheckbox> 
+                <br></br><br></br>
+                
+                <apex:outputPanel >
+                    <apex:outputText >Use Work Type on:</apex:outputText>
+                    <br></br><br></br>
+                <apex:selectRadio value="{!workTypeDecision}">
+                    <apex:selectOptions value="{!workTypeUseOptions}"/>
+                </apex:selectRadio> 
+                </apex:outputPanel>
+                <br></br>
+            
+                <apex:outputText >Priority:&nbsp;</apex:outputText>
+                <apex:selectList value="{!priority}" size="1" multiselect="false">
+                    <apex:selectOptions value="{!priorityOptions}"/>
+                </apex:selectList>
+                <br></br><br></br>    
+                
+                <apex:outputPanel id="serviceTerritorySection"> 
+                    <apex:outputText >Service Territory to Use:&nbsp;&nbsp;</apex:outputText>
+                    <apex:selectList disabled="{!randomServiceTerritory=true}" value="{!territoryChoice}" size="1" multiselect="false">
+                        <apex:selectOptions value="{!territoryOptions}"/>
+                    </apex:selectList>
+                </apex:outputPanel>
+                <br></br><br></br>
+                <div>
+                    <apex:outputText >Random Service Territory&nbsp;&nbsp;</apex:outputText>
+                    <apex:inputcheckbox value="{!randomServiceTerritory}" label="checkBox">    
+                        <apex:actionSupport event="onchange" rerender="serviceTerritorySection"/>    
+                    </apex:inputcheckbox> 
+                </div>
+                <br></br><br></br><br></br>
+            </div>
+            <div id="inner">
+                <h2>Service Configuration</h2>
+                <apex:outputText >Randomize Service Addresses&nbsp;&nbsp;</apex:outputText>
+                <apex:inputcheckbox value="{!randomizeAddresses}" label="checkBox" >    
+                    <apex:actionSupport event="onchange" rerender="randomAddressSection"/>    
+                </apex:inputcheckbox> 
+                <br></br><br></br>
+            
+                <apex:outputPanel id="randomAddressSection">        
+                    <apex:outputText >Max Distance from Center of Territory:&nbsp;&nbsp;</apex:outputText>
+                    <apex:input type="number" disabled="{!randomizeAddresses=false}" value="{!distance}" html-min="1" html-max="99"/>
+                    <br></br><br></br>
+                <apex:selectRadio disabled="{!randomizeAddresses=false}" value="{!distanceUnit}">
+                    <apex:selectOptions value="{!units}"/>
+                </apex:selectRadio>  
+                </apex:outputPanel>
+                <br></br>
+            
+                <apex:outputText >Early Start:</apex:outputText>
+                <input type="text" id="earlyStart" />
+                <br></br><br></br>
+                
+                <apex:inputHidden value="{!earlyStart}" id="myHiddenField"/>
+                
+                <apex:outputText >Due Date:</apex:outputText>
+                <input type="text" id="dueDate"/>
+                <br></br><br></br>
+                
+                <apex:inputHidden value="{!dueDate}" id="myHiddenField2"/>
+                
+                <apex:outputText >Custom Gantt Label:</apex:outputText>    
+                <apex:inputText value="{!customGanttLabel}"></apex:inputText>
+                <br></br><br></br>
+                <div>
+                    <apex:outputText >Schedule&nbsp;&nbsp;</apex:outputText>
+                    <apex:inputcheckbox value="{!autoSchedule}" label="checkBox"></apex:inputcheckbox> 
+                </div>
+                <br></br>
+                <apex:commandButton action="{!generateData}" value="Generate Data" onclick="setVar(document.getElementById('earlyStart').value),setVar2(document.getElementById('dueDate').value);">
+                </apex:commandButton>
+            </div>
+        </div>
+    </apex:form>    
+    <apex:form rendered="{!submitted=true}">
+        <apex:outputText >Submitted</apex:outputText><br></br><br></br>
+        <apex:commandButton action="{!reGenerateData}" value="Generate More Data" onclick="">
+        </apex:commandButton>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,125 @@
+.top-image {
+    margin-top: -70px;
+    width: 100%;
+    height: 30%;
+}
+
+.top-image>img {
+    width: 100%;
+    height: 100%;
+}
+
+.center-content {
+    margin: 2%;
+    display: flex;
+    width: 96%;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-content {
+    width: 100%;
+    height: 100%;
+}
+
+.container-item:first-child {
+    padding-right: 15px;
+}
+
+.container-item:last-child {
+    padding-left: 15px;
+}
+
+.container-item {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+  .container-item div {
+   grid-row-start: 1;
+   grid-column-start: 1;
+  }
+
+  .container-item:hover .top-div {
+    background-color: rgb(21, 21, 21, 0.7);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-item:hover .top-div2 {
+    background-color: rgb(21, 21, 21, 0.7);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.cruza-shop {
+    width: 100%;
+    height: 100%;
+}
+
+.cruza-shop>img, .cruza-invoice>img {
+    width: 100%;
+    height: 100%;
+}
+
+.center-container {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+}
+
+.container-item:hover .top-div-head {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    padding: 5%;
+    font-weight: bolder;
+    opacity: 0.8;
+}
+
+.container-item:hover .top-div-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: silver;
+    padding: 5%;
+    margin: 5%;
+    font-size: 16px;
+}
+
+.container-item:hover .top-div-button {
+    background: #e10202;
+    width: 120px;
+    height: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.container-item:hover .top-div-button:hover {
+    cursor: pointer;
+    background: white;
+    width: 120px;
+    height: 30px;
+    color: #e10202;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px #e10202 solid;
+    border-radius: 10px;
+}

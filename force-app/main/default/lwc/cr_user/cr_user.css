@@ -1,0 +1,214 @@
+.user-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    gap: 10px;
+}
+
+.user-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 5%;
+}
+
+.back-to-home, .add-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: purple;
+    color: white;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 10px;
+}
+
+.back-to-home:hover, .add-user:hover {
+    background-color: white;
+    cursor: pointer;
+    color: purple;
+    border: 1px solid purple;
+}
+
+
+.user-list {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+    width: 100%;
+}
+
+.user-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+
+.user-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 150px;
+    border-radius: 50%;
+    height: 150px;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pages {
+    display: flex;
+    gap: 5px;
+}
+
+.page {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.page.active {
+    background-color: #0070d2;
+    color: white;
+    font-weight: bold;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+.modal-background {
+    position: fixed; /* Use fixed for better positioning on scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.5); /* Use rgba for consistent opacity */
+    z-index: 1000; /* Ensure it’s above most elements */
+}
+
+.modal-content {
+    position: fixed; /* Center alignment with fixed */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the modal */
+    width: 50%;
+    max-width: 500px; /* Add max-width for better responsiveness */
+    background-color: white;
+    border-radius: 10px; /* Slight rounding for aesthetics */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    z-index: 1001; /* Ensure it's above the background */
+    overflow: hidden; /* Prevent content overflow */
+}
+
+.modal-text {
+    margin: 20px;
+    font-size: 1rem;
+    text-align: center; /* Center the text */
+    color: #333; /* Dark grey for better readability */
+}
+
+.buttons {
+    display: flex;
+    justify-content: center; /* Center align the buttons */
+    margin: 20px; /* Add consistent spacing */
+    gap: 20px; /* Space between buttons */
+}
+
+.cancel-btn, .save-btn {
+    width: 8rem;
+    height: 2.5rem; /* Slightly taller for better touch targets */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover transitions */
+}
+
+.cancel-btn {
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+
+.cancel-btn:hover {
+    background-color: white;
+    color: red;
+}
+
+.save-btn {
+    background-color: green;
+    color: white;
+    border: 1px solid green;
+}
+
+.save-btn:hover {
+    background-color: white;
+    color: green;
+}
+
+.prevnext {
+    border: none;
+    color: purple;
+    background: none;
+}
+
+.prevnext:disabled {
+    color: grey;
+    cursor: not-allowed;
+}
+
+.prevnext:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.pagination-button {
+    border: none;
+    background: none;
+    color: purple;
+    border-radius: 10px;
+}
+
+.pagination-button:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+.pagination-button:disabled {
+    color: grey;
+    cursor: not-allowed;
+}
+
+
+.pagination-button-selected {
+    background-color: white;
+    border: 1px solid purple;
+}
+
+.pagination-button-selected:hover {
+    opacity: 0.5;
+}
+
+.pagination-button-selected:disabled {
+    color: grey;
+    cursor: not-allowed;
+}

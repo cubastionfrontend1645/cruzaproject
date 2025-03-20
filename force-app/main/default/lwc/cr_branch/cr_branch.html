@@ -1,0 +1,34 @@
+<template>
+  <div class="form-cards">
+    <div class="form-card">
+      <template if:true={opendetailuserinfo}>
+        <div class="form-card-heading">
+          <svg class="form-heading-svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="31" height="31" rx="2.5" fill="white"/>
+            <rect x="0.5" y="0.5" width="31" height="31" rx="2.5" stroke="#D9D9D9"/>
+            <path d="M24.1663 17.1654H7.83301V14.832H24.1663V17.1654Z" fill="black"/>
+            </svg>
+          <p class="form-heading-text">User Information </p>
+        </div>
+         <div class="card-content">
+          <div class="form-card-content-left">
+              <div class="form-card-item"></div>
+              <div class="form-card-item"></div>
+              <div class="form-card-item"></div>
+              <div class="form-card-item"></div>
+          </div>
+          <div class="form-card-content-right">
+              <div class="form-card-item"></div>
+              <div class="form-card-item"></div>
+              <div class="form-card-item"></div>
+          </div>
+         </div>
+      </template>
+      <template if:false={opendetailuserinfo}>
+
+      </template>
+    </div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+</template>
