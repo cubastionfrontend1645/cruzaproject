@@ -1,0 +1,38 @@
+name: Salesforce Backup
+
+on:
+  schedule:
+    - cron: "0 2 * * *"  # Runs every day at 2 AM UTC
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Salesforce CLI
+        run: |
+          npm install --global sfdx-cli
+
+      - name: Authenticate with Salesforce
+        env:
+          SFDX_AUTH_URL: ${{ secrets.SALESFORCE_AUTH_URL }}
+        run: |
+          echo $SFDX_AUTH_URL > sfdx_auth.txt
+          sfdx auth:sfdxurl:store -f sfdx_auth.txt -a myOrg -d
+          rm sfdx_auth.txt
+
+      - name: Retrieve Metadata from Salesforce
+        run: |
+          sfdx force:mdapi:retrieve -r ./metadata -u myOrg -k package.xml
+          unzip -o ./metadata/unpackaged.zip -d ./metadata/
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Automated Salesforce Backup - $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          git push
