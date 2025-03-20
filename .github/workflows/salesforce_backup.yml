@@ -21,7 +21,7 @@ jobs:
           SFDX_AUTH_URL: ${{ secrets.SALESFORCE_AUTH_URL }}
         run: |
           echo $SFDX_AUTH_URL > sfdx_auth.txt
-          sfdx auth:sfdxurl:store -f sfdx_auth.txt -a myOrg -d
+          sfdx auth:sfdxurl:store -f sfdx_auth.txt -a personal-usage -d
           rm sfdx_auth.txt
 
       - name: Retrieve Metadata from Salesforce
