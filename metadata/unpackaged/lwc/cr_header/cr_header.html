@@ -1,4 +1,5 @@
 <template>
+<template if:false={isGuestUser}>
     <div class="header">
         <div class="header-item-par">
             <div class="first-half-item-logo" onclick={handleHome}>Cruza</div>             
@@ -25,4 +26,5 @@
             </template>     
         </div>
     </div>
+</template>
 </template>

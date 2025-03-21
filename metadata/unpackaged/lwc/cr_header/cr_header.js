@@ -1,12 +1,17 @@
 import { LightningElement, track } from 'lwc';
 import cruza_header_logo from '@salesforce/resourceUrl/cruza_header_logo';
+import userId from '@salesforce/user/Id';
 
 export default class Cr_header extends LightningElement {
     cruza_header_logo = cruza_header_logo;
     loginText = "Login";
     @track loginBox = false;
+    isGuestUser = true;
 
     connectedCallback() {
+        if (userId) {
+            this.isGuestUser = false;
+        }
         document.addEventListener('click', this.handleOutsideClick);
         this.highlightCurrentPage();
     }

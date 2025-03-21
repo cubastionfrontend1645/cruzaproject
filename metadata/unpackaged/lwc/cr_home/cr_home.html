@@ -1,6 +1,13 @@
 <template>
     <div class="main-content">
-
+    <template if:true={isGuestUser}>
+        <div class="redirect-box">
+            <h1 class="title">🔒 Access Restricted</h1>
+            <p class="message">Oops! You need to be logged in to access this page.</p>
+            <button class="login-btn" onclick={handleLoginRedirect}>Login Now</button>
+        </div>
+    </template>
+    <template if:false={isGuestUser}>
         <div class="top-image">
             <img src={truck_home} alt="Truck Home Image">
         </div>
@@ -29,5 +36,6 @@
                 </div>
             </div>
         </div>
+    </template>
     </div>
 </template>
