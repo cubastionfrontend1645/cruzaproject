@@ -1,7 +1,7 @@
 .top-image {
     margin-top: -70px;
     width: 100%;
-    height: 30%;
+    height: 250px;
 }
 
 .top-image>img {
@@ -23,6 +23,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .container-item:first-child {
@@ -38,35 +39,36 @@
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-  }
-  
-  .container-item div {
-   grid-row-start: 1;
-   grid-column-start: 1;
-  }
+}
 
-  .container-item:hover .top-div {
+.container-item div {
+    grid-row-start: 1;
+    grid-column-start: 1;
+}
+
+.container-item:hover .top-div {
     background-color: rgb(21, 21, 21, 0.7);
     z-index: 5;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
 
-  .container-item:hover .top-div2 {
+.container-item:hover .top-div2 {
     background-color: rgb(21, 21, 21, 0.7);
     z-index: 5;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
 
 .cruza-shop {
     width: 100%;
     height: 100%;
 }
 
-.cruza-shop>img, .cruza-invoice>img {
+.cruza-shop>img,
+.cruza-invoice>img {
     width: 100%;
     height: 100%;
 }
@@ -126,7 +128,8 @@
     border-radius: 10px;
 }
 
-.redirect-box, .welcome-box {
+.redirect-box,
+.welcome-box {
     background: white;
     padding: 40px;
     border-radius: 12px;
@@ -136,7 +139,8 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.redirect-box:hover, .welcome-box:hover {
+.redirect-box:hover,
+.welcome-box:hover {
     transform: scale(1.05);
 }
 

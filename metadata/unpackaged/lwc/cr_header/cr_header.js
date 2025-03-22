@@ -11,6 +11,7 @@ export default class Cr_header extends LightningElement {
     connectedCallback() {
         if (userId) {
             this.isGuestUser = false;
+            this.loginText = "Logout";
         }
         document.addEventListener('click', this.handleOutsideClick);
         this.highlightCurrentPage();
@@ -55,8 +56,8 @@ export default class Cr_header extends LightningElement {
     handleOutsideClick = (event) => {
         const loginBoxElement = this.template.querySelector('[data-id="loginBox"]');
         const loginIconElement = this.template.querySelector('.login-svg');
-        
-        if (this.loginBox && loginBoxElement && !loginBoxElement.contains(event.target) && 
+
+        if (this.loginBox && loginBoxElement && !loginBoxElement.contains(event.target) &&
             loginIconElement && !loginIconElement.contains(event.target)) {
             this.closeLoginBox();
         }
@@ -86,6 +87,9 @@ export default class Cr_header extends LightningElement {
     handleLogin() {
         if (this.loginText == "Login") {
             window.location.href = '/logout';
-        } 
+        } else {
+            window.location.href = "/";
+            this.isGuestUser = true;
+        }
     }
 }
