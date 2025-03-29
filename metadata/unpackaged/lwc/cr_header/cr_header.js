@@ -64,32 +64,47 @@ export default class Cr_header extends LightningElement {
     };
 
     handleVehicle() {
-        window.location.href = '/vehicle';
+        // window.location.href = '/vehicle';
     }
     handleHome() {
-        window.location.href = '/';
+        // window.location.href = '/';
     }
     handleInvoice() {
-        window.location.href = '/invoice';
+        // window.location.href = '/invoice';
     }
     handleDtfsa() {
-        window.location.href = '/dtfsa';
+        // window.location.href = '/dtfsa';
     }
     handleBasicInfo() {
-        window.location.href = '/basicinfo';
+        // window.location.href = '/basicinfo';
     }
     handleUser() {
-        window.location.href = '/user';
+        // window.location.href = '/user';
     }
     handleBranch() {
-        window.location.href = "branch";
+        // window.location.href = "branch";
     }
+
+    logoutUser() {
+        // Step 1: Logout from Salesforce and redirect correctly
+        window.location.href = 'https://personalusage-dev-ed.develop.my.site.com/cruzacentral/secur/logout.jsp?retUrl=https://personalusage-dev-ed.develop.my.site.com/cruzacentral/s/';
+
+        // Step 2: Logout from Microsoft Entra ID after a slight delay (increased to 3 seconds)
+        setTimeout(() => {
+            window.location.href = 'https://login.microsoftonline.com/ab6e770e-1c90-4d9f-9808-6d0fd951f84a/oauth2/v2.0/logout?post_logout_redirect_uri=https://personalusage-dev-ed.develop.my.site.com/cruzacentral/s/';
+        }, 3000);  // Delay set to 3 seconds
+    }
+
+
+
     handleLogin() {
         if (this.loginText == "Login") {
-            window.location.href = '/logout';
-        } else {
-            window.location.href = "/";
+            console.log("Working 1", window.location.href);
+            window.location.href = "login";
             this.isGuestUser = true;
+        } else {
+            console.log("Working 2", window.location.href);
+            this.logoutUser();
         }
     }
 }

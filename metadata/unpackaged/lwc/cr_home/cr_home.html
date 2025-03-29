@@ -1,64 +1,35 @@
 <template>
     <div class="main-content">
-        <template if:true={isGuestUser}>
-            <div class="redirect-box">
-                <h1 class="title">🔒 Access Restricted</h1>
-                <p class="message">Oops! You need to be logged in to access this page.</p>
-                <button class="login-btn" onclick={handleLoginRedirect}>Login Now</button>
-            </div>
-        </template>
-        <template if:false={isGuestUser}>
-            <div class="top-image">
-                <div class="slideshow-container">
-                    <template for:each={slides} for:item="slide">
-                        <div key={slide.id} class="mySlide fade">
-                            <div class="numbertext">{slide.id} / {totalSlides}</div>
-                            <img class="banner-images" src={slide.src} style="width:100%" />
-                            <div class="text">{slide.caption}</div>
-                        </div>
-                    </template>
-                    <a class="prev" onclick={handlePrev}>&#10094;</a>
-                    <a class="next" onclick={handleNext}>&#10095;</a>
-                </div>
 
-                <br />
-
-                <div style="text-align:center">
-                    <template for:each={slides} for:item="slide">
-                        <span key={slide.id} class="dot" onclick={handleDotClick} data-index={slide.id}></span>
-                    </template>
-                </div>
-            </div>
-
-
-
-            <div class="center-content">
-                <div class="center-header">Menu</div>
-                <div class="center-container">
-                    <div class="container-item">
-                        <div class="top-div">
-                            <div class="top-div-head">Cruza Shop</div>
-                            <div class="top-div-content">Order anytime, anywhere online! You can easily and conveniently
-                                purchase high-quality genuine parts and accessories.</div>
-                            <div class="top-div-button">Visit Shop</div>
-                        </div>
-                        <div class="cruza-shop">
-                            <img src={cruza_shop} alt="Cruza Shop Image" class="Cruza-shop-image">
-                        </div>
+        <div class="top-image">
+            <img src={truck_home} alt="Truck Home Image">
+        </div>
+        <div class="center-content">
+            <div class="center-header">Menu</div>
+            <div class="center-container">
+                <div class="container-item">
+                    <div class="top-div">
+                        <div class="top-div-head">Cruza Shop</div>
+                        <div class="top-div-content">Order anytime, anywhere online! You can easily and conveniently
+                            purchase high-quality genuine parts and accessories.</div>
+                        <div class="top-div-button">Visit Shop</div>
                     </div>
-                    <div class="container-item">
-                        <div class="top-div2">
-                            <div class="top-div-head">Cruza Invoice</div>
-                            <div class="top-div-content">A streamlined invoicing solution designed to simplify billing
-                                and payment management with efficiency and clarity.</div>
-                            <div class="top-div-button">View Invoice</div>
-                        </div>
-                        <div class="cruza-invoice">
-                            <img src={cruza_invoice} alt="Cruza Invoice Image">
-                        </div>
+                    <div class="cruza-shop">
+                        <img src={cruza_shop} alt="Cruza Shop Image" class="Cruza-shop-image">
+                    </div>
+                </div>
+                <div class="container-item">
+                    <div class="top-div2">
+                        <div class="top-div-head">Cruza Invoice</div>
+                        <div class="top-div-content">A streamlined invoicing solution designed to simplify billing and
+                            payment management with efficiency and clarity.</div>
+                        <div class="top-div-button">View Invoice</div>
+                    </div>
+                    <div class="cruza-invoice">
+                        <img src={cruza_invoice} alt="Cruza Invoice Image">
                     </div>
                 </div>
             </div>
-        </template>
+        </div>
     </div>
 </template>

@@ -1,33 +1,36 @@
 <template>
-    <template if:false={isGuestUser}>
-        <div class="header">
-            <div class="header-item-par">
-                <div class="first-half-item-logo" onclick={handleHome}>Cruza</div>
-            </div>
-            <div class="header-item-par">
-                <div class="a header-item" onclick={handleHome}>Home</div>
-                <div class="b header-item" onclick={handleVehicle}>Vehicle</div>
-                <div class="c header-item" onclick={handleInvoice}>Spare parts</div>
-                <div class="d header-item" onclick={handleDtfsa}>Finance</div>
-            </div>
-            <div class="header-item-par">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    class="login-svg" onclick={showLoginBox}>
-                    <rect x="3" y="3" width="26" height="26" rx="13" class="login-class-stroke" stroke-width="2" />
-                    <circle cx="16" cy="12" r="4" stroke-width="2" class="login-class-stroke" />
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M15.9704 19C18.5569 18.9941 21.0761 19.824 23.1526 21.366C24.0867 22.0598 24.9088 22.881 25.5982 23.8001C25.0366 24.2221 24.5897 24.7884 24.3126 25.444C23.6799 24.4972 22.8861 23.6593 21.9602 22.9717C20.2297 21.6866 18.1304 20.9951 15.975 21C13.8196 21.005 11.7235 21.7062 9.99904 22.9993C9.08909 23.6816 8.30831 24.5094 7.6843 25.4429C7.40705 24.7875 6.96006 24.2213 6.39844 23.7995C7.07664 22.8953 7.88342 22.0858 8.79923 21.3991C10.8686 19.8475 13.3839 19.006 15.9704 19Z"
-                        class="login-class" />
-                </svg>
-                <template if:true={loginBox}>
-                    <div class="login-box" data-id="loginBox">
-                        <div class="e login-box-item" onclick={handleBasicInfo}>View profile</div>
-                        <div class="f login-box-item" onclick={handleUser}>Transactions</div>
-                        <div class="g login-box-item" onclick={handleBranch}>Outlet</div>
-                        <div class="h login-box-item login-color" onclick={handleLogin}>{loginText}</div>
-                    </div>
-                </template>
-            </div>
+    <div class="header">
+        <div class="header-item-par">
+            <div class="first-half-item-logo" onclick={handleHome}>Cruza</div>
         </div>
-    </template>
+        <div class="header-item-par">
+            <div class="a header-item" onclick={handleHome}>Home</div>
+            <template if:false={isGuestUser}>
+                <div class="b header-item" onclick={handleVehicle}>Vehicle</div>
+                <div class="c header-item" onclick={handleSpare}>Spare parts</div>
+                <div class="d header-item" onclick={handleFinance}>Finance</div>
+            </template>
+        </div>
+        <div class="header-item-par">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                class="login-svg" onclick={showLoginBox}>
+                <rect x="3" y="3" width="26" height="26" rx="13" class="login-class-stroke" stroke-width="2" />
+                <circle cx="16" cy="12" r="4" stroke-width="2" class="login-class-stroke" />
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M15.9704 19C18.5569 18.9941 21.0761 19.824 23.1526 21.366C24.0867 22.0598 24.9088 22.881 25.5982 23.8001C25.0366 24.2221 24.5897 24.7884 24.3126 25.444C23.6799 24.4972 22.8861 23.6593 21.9602 22.9717C20.2297 21.6866 18.1304 20.9951 15.975 21C13.8196 21.005 11.7235 21.7062 9.99904 22.9993C9.08909 23.6816 8.30831 24.5094 7.6843 25.4429C7.40705 24.7875 6.96006 24.2213 6.39844 23.7995C7.07664 22.8953 7.88342 22.0858 8.79923 21.3991C10.8686 19.8475 13.3839 19.006 15.9704 19Z"
+                    class="login-class" />
+            </svg>
+            <template if:true={loginBox}>
+                <div class="login-box" data-id="loginBox">
+                    <div class="e login-box-item" onclick={handleProfile}>View profile</div>
+                    <template if:false={isGuestUser}>
+                        <div class="f login-box-item" onclick={handleTransactions}>Transactions</div>
+                        <div class="g login-box-item" onclick={handleOutlet}>Outlet</div>
+                    </template>
+                    <div class="h login-box-item login-color" onclick={handleLogin}>{loginText}</div>
+                </div>
+            </template>
+        </div>
+    </div>
+
 </template>
