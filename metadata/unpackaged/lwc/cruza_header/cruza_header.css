@@ -1,0 +1,39 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    background: #4300FF;
+    color: white;
+    border-radius: 6px;
+    width: 90%;
+    max-width: 1536px;
+    margin-inline: auto;
+    padding: 0 1rem;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.center {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.right {
+    display: flex;
+    margin-right: 1rem;
+}
