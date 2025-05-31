@@ -8,14 +8,29 @@
 
 .container {
     width: 90%;
-    margin-inline: auto;
-    background: #cccbcb;
-    display: grid;
-    grid-template-rows:  repeat(4, 1fr);
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1fr;
+        border-radius: 6px;
+        margin-inline: auto;
+        background: #202040;
+        COLOR: WHITE;
+        height: 80vh;
+        padding: 1rem;
+        margin-top: 3rem;
 }
 
-.container-col {
-    
+@media (max-width: 2560px) {
+
 }
+
+@media (max-width: 1440px) {}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 2560px) {}
+
+@media (max-width: 425px) {}
+
+@media (max-width: 375px) {}
+
+@media (max-width: 320px) {}
