@@ -14,7 +14,35 @@
         COLOR: WHITE;
         height: 80vh;
         padding: 1rem;
-        margin-top: 3rem;
+        margin-top: 2.2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+}
+
+.header {
+    align-self: flex-start;
+    font-size: 28px;
+    font-weight: 700;
+    animation-name: slideIn;
+        animation-duration: 60s;
+        animation-timing-function: ease-in-out;
+        animation-delay: 0s;
+        animation-iteration-count:infinite;
+        animation-fill-mode: forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(0%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(300%);
+        opacity: 1;
+    }
 }
 
 @media (max-width: 2560px) {
