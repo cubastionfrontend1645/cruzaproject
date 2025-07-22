@@ -1,16 +1,8 @@
 <template>
-    <lightning-card title="Rich Text Character Limit Example">
-        <lightning-input-rich-text
-            label="Enter Text"
-            value={descValue}
-            message-when-bad-input={errorMessage}
-            class="cr_vehicle"
-            data-id="cr_vehicle"
-            onchange={handleRichTextInput}
-            >
-        </lightning-input-rich-text>
-        <p class="character-count">
-            {characterCount} / {maxCharacterLimit} characters
-        </p>
-    </lightning-card>
+    <div class="header">Your Vehicles {vehicleCount}</div>
+    <div class="vehicle-list">
+        <template for:each={vehicleList} for:item="vehicle">
+            <div key={vehicle.Id} class="vehicle-item">{vehicle.name}</div>
+        </template>
+    </div>
 </template>

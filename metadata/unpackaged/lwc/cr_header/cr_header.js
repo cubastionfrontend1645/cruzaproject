@@ -28,8 +28,8 @@ export default class Cr_header extends LightningElement {
         const pageClasses = {
             "/": 'a',
             "/vehicle": 'b',
-            "/invoice": 'c',
-            "/dtfsa": 'd',
+            "/spare": 'c',
+            "/finance": 'd',
             "/basicinfo": 'e',
             "/user": 'f',
             "/branch": 'g',
@@ -63,26 +63,46 @@ export default class Cr_header extends LightningElement {
         }
     };
 
-    handleVehicle() {
-        // window.location.href = '/vehicle';
+    handleVehicle(event) {
+        event.stopPropagation();
+        const selectedComponent = this.template.querySelector('.down-underline');
+        const newComponent = this.template.querySelector('.b.header-item');
+        if (selectedComponent) selectedComponent.classList.remove('down-underline');
+        if (newComponent) newComponent.classList.add('down-underline');
+        window.location.href = '/vehicle';
     }
-    handleHome() {
-        // window.location.href = '/';
+    handleHome(event) {
+        event.stopPropagation();
+        const selectedComponent = this.template.querySelector('.down-underline');
+        const newComponent = this.template.querySelector('.a.header-item');
+        if (selectedComponent) selectedComponent.classList.remove('down-underline');
+        if (newComponent) newComponent.classList.add('down-underline');
+        window.location.href = '/';
     }
-    handleInvoice() {
-        // window.location.href = '/invoice';
+    handleSpare(event) {
+        event.stopPropagation();
+        const selectedComponent = this.template.querySelector('.down-underline');
+        const newComponent = this.template.querySelector('.c.header-item');
+        if (selectedComponent) selectedComponent.classList.remove('down-underline');
+        if (newComponent) newComponent.classList.add('down-underline');
+        window.location.href = '/spare';
     }
-    handleDtfsa() {
-        // window.location.href = '/dtfsa';
+    handleFinance(event) {
+        event.stopPropagation();
+        const selectedComponent = this.template.querySelector('.down-underline');
+        const newComponent = this.template.querySelector('.d.header-item');
+        if (selectedComponent) selectedComponent.classList.remove('down-underline');
+        if (newComponent) newComponent.classList.add('down-underline');
+        window.location.href = '/finance';
     }
-    handleBasicInfo() {
-        // window.location.href = '/basicinfo';
+    handleProfile() {
+        window.location.href = '/';
     }
-    handleUser() {
-        // window.location.href = '/user';
+    handleTransactions() {
+        window.location.href = '/';
     }
-    handleBranch() {
-        // window.location.href = "branch";
+    handleOutlet() {
+        window.location.href = '/';
     }
 
     logoutUser() {

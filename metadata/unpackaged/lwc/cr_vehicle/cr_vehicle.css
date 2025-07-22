@@ -1,64 +1,69 @@
-.parent-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 130;
-  }
+.header {
+  display: flex;
+  font-size: 28px;
+  font-weight: 700;
+  margin: auto;
+  padding: 5px;
+  justify-content: center;
+  margin-top: 30px;
+}
 
-  .modal-container {
-    background-color: rgba(251, 251, 251, 1);
-    border-radius: 8px;
-    padding: 1rem 3rem 2rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 402px;
-    max-width: 90%;
-    max-height: 90%;
-    overflow: auto;
-  }
+.vehicle-list {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  height: 300px;
+  overflow: auto;
+  padding: 10px;
+}
 
-  .radio-container {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    padding-bottom: 0;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
+.vehicle-list {
+  /* your existing styles */
+  scrollbar-width: thin;
+  /* Firefox */
+  scrollbar-color: #1976d2 transparent;
+  /* Firefox */
+}
 
-  .buttons-small2 {
-    height: 36%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 20px;
-  }
+/* Chrome, Edge, Safari */
+.vehicle-list::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 4px;
+}
 
-  .yes-btn1 {
-    display: flex;
-    padding: 12px 16px;
-    justify-content: center;
-    width: 150px;
-    height: 40px;
-    align-items: center;
-    cursor: pointer;
-    gap: 8px;
-    border-radius: 10px;
-    border: 1px solid #E10202;
-    background: #E10202;
-    color: white;
-    /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15); */
-  }
+.vehicle-list::-webkit-scrollbar-thumb {
+  background: #1976d2;
+  /* scrollbar "thumb" */
+  border-radius: 4px;
+}
 
-  .yes-btn1:hover {
-    background-color: white;
-    border: 1px solid #e10202;
-    cursor: pointer;
-    color: #e10202;
-  }
+.vehicle-list::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  /* scrollbar track */
+  border-radius: 4px;
+}
+
+.vehicle-item {
+  /* Fixed height (example: 70px, adjust as you like) */
+  height: 70px;
+
+  /* Ensure content is centered */
+  display: flex;
+  align-items: center;
+
+  /* Card Styling */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px 20px;
+
+  /* Optional: smooth hover */
+  transition: box-shadow 0.2s;
+}
+
+.vehicle-item:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
