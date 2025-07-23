@@ -1,8 +1,44 @@
 <template>
-    <div class="header">Your Vehicles {vehicleCount}</div>
-    <div class="vehicle-list">
-        <template for:each={vehicleList} for:item="vehicle">
-            <div key={vehicle.Id} class="vehicle-item">{vehicle.name}</div>
-        </template>
+    <div class="container">
+        <div class="vehicle-list-header">List of Vehicles ({vehicleCount})</div>
+        <div class="vehicle-list" title="Vehicle List with Pagination">
+            <template for:each={paginatedVehicles} for:item="vehicle">
+                <div data-id={vehicle.id} key={vehicle.id} onclick={handleCardClick} class="vehicle-item">
+                    <p><strong>Name:</strong> {vehicle.name}</p>
+                    <p><strong>Color:</strong> {vehicle.color}</p>
+                    <p><strong>Price:</strong> {vehicle.price}</p>
+                    <p><strong>Year:</strong> {vehicle.year}</p>
+                    <p><strong>Mileage:</strong> {vehicle.mileage}</p>
+                    <p><strong>Location:</strong> {vehicle.location}</p>
+                </div>
+            </template>
+        </div>
+        <div class="slds-m-top_medium" style="justify-self: center;">
+            <lightning-button label="Previous" onclick={handlePrev} disabled={isFirstPage} class="slds-m-right_small">
+            </lightning-button>
+            <span> Page {currentPage} of {totalPages}</span>
+            <lightning-button label="Next" onclick={handleNext} disabled={isLastPage} class="slds-m-left_small">
+            </lightning-button>
+        </div>
     </div>
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-modal__title">{selectedVehicle.name}</h2>
+                </header>
+                <div class="slds-modal__content">
+                    <p><strong>Color:</strong> {selectedVehicle.color}</p>
+                    <p><strong>Price:</strong> {selectedVehicle.price}</p>
+                    <p><strong>Year:</strong> {selectedVehicle.year}</p>
+                    <p><strong>Mileage:</strong> {selectedVehicle.mileage}</p>
+                    <p><strong>Location:</strong> {selectedVehicle.location}</p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModal}>Close</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
 </template>

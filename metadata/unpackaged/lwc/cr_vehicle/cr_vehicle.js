@@ -1,5 +1,6 @@
 import { LightningElement, track } from 'lwc';
 
+const PAGE_SIZE = 3;
 export default class RichTextCharacterLimit extends LightningElement {
 
     vehicleList = [
@@ -194,4 +195,50 @@ export default class RichTextCharacterLimit extends LightningElement {
         }
     ];
     vehicleCount = this.vehicleList.length;
+
+    @track currentPage = 1;
+
+    // Computed property for paginated items
+    get paginatedVehicles() {
+        const startIndex = (this.currentPage - 1) * PAGE_SIZE;
+        return this.vehicleList.slice(startIndex, startIndex + PAGE_SIZE);
+    }
+
+    get totalPages() {
+        return Math.ceil(this.vehicleCount / PAGE_SIZE);
+    }
+
+    get isFirstPage() {
+        return this.currentPage === 1;
+    }
+
+    get isLastPage() {
+        return this.currentPage === this.totalPages;
+    }
+
+    handlePrev() {
+        if (this.currentPage > 1) {
+            this.currentPage--;
+        }
+    }
+
+    handleNext() {
+        if (this.currentPage < this.totalPages) {
+            this.currentPage++;
+        }
+    }
+    @track isModalOpen = false;
+    @track selectedVehicle = {};
+
+    handleCardClick(event) {
+        const id = event.currentTarget.dataset.id;
+        const vehicle = this.vehicleList.find(v => v.id === Number(id));
+        this.selectedVehicle = vehicle;
+        this.isModalOpen = true;
+    }
+
+    closeModal() {
+        this.isModalOpen = false;
+        this.selectedVehicle = {};
+    }
 }

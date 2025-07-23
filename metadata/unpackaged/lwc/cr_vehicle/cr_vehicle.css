@@ -62,8 +62,27 @@
 
   /* Optional: smooth hover */
   transition: box-shadow 0.2s;
+  font-size: 14px;
+  gap: 1%;
 }
 
 .vehicle-item:hover {
+  cursor: pointer;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.container {
+  margin-top: 40px;
+}
+
+.vehicle-list-header {
+  font-size: 28px;
+  font-weight: 700;
+  justify-self: center;
+}
+
+.vehicle-item>p {
+  display: block;
+  width: 17%;
+  align-self: baseline;
 }
