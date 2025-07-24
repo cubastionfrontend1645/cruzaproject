@@ -1,44 +1,57 @@
 <template>
     <div class="container">
-        <div class="vehicle-list-header">List of Vehicles ({vehicleCount})</div>
+        <div class="main-header">
+            <div class="vehicle-list-header">List of Vehicles ({vehicleCount})</div>
+            <div class="slds-m-top_medium" style="justify-self: center;">
+                <lightning-button label="Previous" onclick={handlePrev} disabled={isFirstPage}
+                    class="slds-m-right_small">
+                </lightning-button>
+                <span> Page {currentPage} of {totalPages}</span>
+                <lightning-button label="Next" onclick={handleNext} disabled={isLastPage} class="slds-m-left_small">
+                </lightning-button>
+            </div>
+        </div>
+        <!-- Display in a paginated list (in your main list view) -->
         <div class="vehicle-list" title="Vehicle List with Pagination">
             <template for:each={paginatedVehicles} for:item="vehicle">
-                <div data-id={vehicle.id} key={vehicle.id} onclick={handleCardClick} class="vehicle-item">
-                    <p><strong>Name:</strong> {vehicle.name}</p>
-                    <p><strong>Color:</strong> {vehicle.color}</p>
-                    <p><strong>Price:</strong> {vehicle.price}</p>
-                    <p><strong>Year:</strong> {vehicle.year}</p>
-                    <p><strong>Mileage:</strong> {vehicle.mileage}</p>
-                    <p><strong>Location:</strong> {vehicle.location}</p>
+                <div data-id={vehicle.Id} key={vehicle.Id} onclick={handleCardClick} class="vehicle-item">
+                    <p><strong>Name:</strong> {vehicle.Name__c}</p>
+                    <p><strong>Reg No:</strong> {vehicle.Reg_No__c}</p>
+                    <p><strong>Chassis No:</strong> {vehicle.Chassis_No__c}</p>
+                    <p><strong>Date of Registration:</strong> {vehicle.Date_of_Registration__c}</p>
+                    <p><strong>Date of Shaken Expiry:</strong> {vehicle.Date_of_Shaken_Expiry__c}</p>
+                    <p><strong>Weight (kg):</strong> {vehicle.Weight_kg__c}</p>
+                    <p><strong>Type:</strong> {vehicle.Type__c}</p>
+                    <p><strong>Use:</strong> {vehicle.Use__c}</p>
+                    <p><strong>Mileage:</strong> {vehicle.Mileage__c}</p>
                 </div>
             </template>
         </div>
-        <div class="slds-m-top_medium" style="justify-self: center;">
-            <lightning-button label="Previous" onclick={handlePrev} disabled={isFirstPage} class="slds-m-right_small">
-            </lightning-button>
-            <span> Page {currentPage} of {totalPages}</span>
-            <lightning-button label="Next" onclick={handleNext} disabled={isLastPage} class="slds-m-left_small">
-            </lightning-button>
-        </div>
+
     </div>
     <template if:true={isModalOpen}>
         <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
             <div class="slds-modal__container">
-                <header class="slds-modal__header">
-                    <h2 class="slds-modal__title">{selectedVehicle.name}</h2>
+                <header class="modal-header">
+                    <h2 class="slds-modal__title">{selectedVehicle.Name__c}</h2>
                 </header>
-                <div class="slds-modal__content">
-                    <p><strong>Color:</strong> {selectedVehicle.color}</p>
-                    <p><strong>Price:</strong> {selectedVehicle.price}</p>
-                    <p><strong>Year:</strong> {selectedVehicle.year}</p>
-                    <p><strong>Mileage:</strong> {selectedVehicle.mileage}</p>
-                    <p><strong>Location:</strong> {selectedVehicle.location}</p>
+                <div class="modal-content">
+                    <p><strong>Reg No:</strong> {selectedVehicle.Reg_No__c}</p>
+                    <p><strong>Chassis No:</strong> {selectedVehicle.Chassis_No__c}</p>
+                    <p><strong>Date of Registration:</strong> {selectedVehicle.Date_of_Registration__c}</p>
+                    <p><strong>Date of Shaken Expiry:</strong> {selectedVehicle.Date_of_Shaken_Expiry__c}</p>
+                    <p><strong>Weight (kg):</strong> {selectedVehicle.Weight_kg__c}</p>
+                    <p><strong>Type:</strong> {selectedVehicle.Type__c}</p>
+                    <p><strong>Use:</strong> {selectedVehicle.Use__c}</p>
+                    <p><strong>Mileage:</strong> {selectedVehicle.Mileage__c}</p>
                 </div>
-                <footer class="slds-modal__footer">
+                <footer class="slds-modal__footer"
+                    style="border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;padding: 1rem;">
                     <button class="slds-button slds-button_neutral" onclick={closeModal}>Close</button>
                 </footer>
             </div>
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>
     </template>
+
 </template>

@@ -29,7 +29,7 @@ export default class Cr_header extends LightningElement {
             "/": 'a',
             "/vehicle": 'b',
             "/spare": 'c',
-            "/finance": 'd',
+            "/calendar": 'd',
             "/basicinfo": 'e',
             "/user": 'f',
             "/branch": 'g',
@@ -87,13 +87,13 @@ export default class Cr_header extends LightningElement {
         if (newComponent) newComponent.classList.add('down-underline');
         window.location.href = '/spare';
     }
-    handleFinance(event) {
+    handleCalendar(event) {
         event.stopPropagation();
         const selectedComponent = this.template.querySelector('.down-underline');
         const newComponent = this.template.querySelector('.d.header-item');
         if (selectedComponent) selectedComponent.classList.remove('down-underline');
         if (newComponent) newComponent.classList.add('down-underline');
-        window.location.href = '/finance';
+        window.location.href = '/calendar';
     }
     handleProfile() {
         window.location.href = '/';
