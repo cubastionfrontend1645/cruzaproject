@@ -5,8 +5,18 @@ export default class Cr_vehicle extends LightningElement {
 
     @track currentPage = 1;
     @track isModalOpen = false;
-    @track selectedVehicle = [];
     vehicleList = [];
+    selectedVehicle = {
+        Reg_No__c: '',
+        Chassis_No__c: '',
+        Date_of_Registration__c: '',
+        Date_of_Shaken_Expiry__c: '',
+        Weight_kg__c: '',
+        Type__c: '',
+        Use__c: '',
+        Mileage__c: ''
+    };
+
 
     @wire(getAllVehicles)
     wiredVehicles({ error, data }) {
@@ -57,7 +67,8 @@ export default class Cr_vehicle extends LightningElement {
     }
 
     handleCardClick(event) {
-        const id = event.currentTarget.dataset.Id;
+        let id = event.currentTarget.dataset.id;
+        console.log(id);
         const vehicle = this.vehicleList.find(v => v.Id === id);
         console.log(vehicle);
         this.selectedVehicle = vehicle;

@@ -1,3 +1,48 @@
 <template>
-    This is calendar
+    <div class="container">
+        <!-- Upper Half: Vehicle Details & Image -->
+        <div class="upper">
+            <div class="vehicle-info">
+                <h2>Vehicle Details</h2>
+                <p><strong>Name:</strong> {selectedVehicle.Name__c}</p>
+                <p><strong>Reg No:</strong> {selectedVehicle.Reg_No__c}</p>
+                <p><strong>Chassis No:</strong> {selectedVehicle.Chassis_No__c}</p>
+                <p><strong>Date of Registration:</strong> {selectedVehicle.Date_of_Registration__c}</p>
+                <p><strong>Weight (kg):</strong> {selectedVehicle.Weight_kg__c}</p>
+                <p><strong>Type:</strong> {selectedVehicle.Type__c}</p>
+                <p><strong>Use:</strong> {selectedVehicle.Use__c}</p>
+                <div class="vehicle-nav">
+                    <button onclick={prevVehicle}>&lt; Prev</button>
+                    <button onclick={nextVehicle}>Next &gt;</button>
+                </div>
+            </div>
+            <div class="vehicle-image">
+                <!-- Dummy image area -->
+                <div class="dummy-image">Vehicle Image</div>
+            </div>
+        </div>
+        <!-- Lower Half: Calendar -->
+        <div class="lower">
+            <div class="calendar-header">
+                <button onclick={prevYear}>&lt; Previous Year</button>
+                <h3>{calendarYear} Annual Calendar</h3>
+                <button onclick={nextYear}>Next Year &gt;</button>
+            </div>
+            <div class="calendar-blocks">
+                <template for:each={maintenanceDisplayMonths} for:item="month">
+                    <div key={month.monthIdx} class="month-block
+                            {month.shaken ? 'shaken' : ''}
+                            {month.tenken ? 'tenken' : ''}">
+                        <div class="month-name">{month.label}</div>
+                        <template if:true={month.shaken}>
+                            <div class="maintenance-label shaken-label">Shaken</div>
+                        </template>
+                        <template if:true={month.tenken}>
+                            <div class="maintenance-label tenken-label">Tenken</div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
 </template>
