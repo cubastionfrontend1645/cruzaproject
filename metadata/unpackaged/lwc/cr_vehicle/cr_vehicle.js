@@ -1,6 +1,6 @@
 import { LightningElement, track, wire } from 'lwc';
 import getAllVehicles from '@salesforce/apex/VehicleManager.getAllVehicles';
-const PAGE_SIZE = 3;
+const PAGE_SIZE = 5;
 export default class Cr_vehicle extends LightningElement {
 
     @track currentPage = 1;

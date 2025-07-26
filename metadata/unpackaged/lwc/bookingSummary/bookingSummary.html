@@ -1,0 +1,60 @@
+<template>
+    <div class="container">
+        <div class="header">
+            <h2>Booking Report</h2>
+            <div class="header-values">
+                <div><strong>Total Bookings:</strong> {totalBookings}</div>
+                <div><strong>Report Date:</strong> {reportDate}</div>
+            </div>
+            <button class="download-button" onclick={handleDownloadExcel}>Download Excel</button>
+        </div>
+
+        <div class="tables-container">
+            <div class="table-wrapper">
+                <h3>Bookings</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Customer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={bookings} for:item="booking">
+                            <tr key={booking.id}>
+                                <td>{booking.name}</td>
+                                <td>{booking.status}</td>
+                                <td>{booking.date}</td>
+                                <td>{booking.customer}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-wrapper">
+                <h3>Services</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={services} for:item="service">
+                            <tr key={service.id}>
+                                <td>{service.name}</td>
+                                <td>{service.price}</td>
+                                <td>{service.quantity}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
